@@ -1,6 +1,6 @@
 package bookjar.bookjarApi.Models;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -63,7 +63,7 @@ public class User {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "book", cascade = CascadeType.ALL)
     @JsonIgnore
-    private ArrayList<Book> booksList;
+    private List<Book> booksList;
 
 
     /**
