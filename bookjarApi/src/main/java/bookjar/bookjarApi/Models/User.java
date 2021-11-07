@@ -1,6 +1,6 @@
 package bookjar.bookjarApi.Models;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -13,7 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
@@ -61,9 +61,9 @@ public class User {
     @Column(length = 300)
     private String Description;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "book", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private ArrayList<Book> booksList;
+    @OneToMany(mappedBy = "User", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnoreProperties
+    private List<Book> booksList;
 
 
     /**
@@ -197,14 +197,14 @@ public class User {
     /**
      * @return ArrayList<Book> return the booksList
      */
-    public ArrayList<Book> getBooksList() {
+    public List<Book> getBooksList() {
         return booksList;
     }
 
     /**
      * @param booksList the booksList to set
      */
-    public void setBooksList(ArrayList<Book> booksList) {
+    public void setBooksList(List<Book> booksList) {
         this.booksList = booksList;
     }
 
