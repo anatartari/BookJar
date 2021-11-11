@@ -29,6 +29,7 @@ public class BookDTO {
 public BookDTO(){}
 
     public BookDTO(Book book){
+        BookId = book.getId();
         Title = book.getTitle();
         Author = book.getAuthor();
         Edition = book.getEdition();

@@ -8,6 +8,8 @@ public interface IBookService {
     
     List<BookDTO> findByTitleStartingWith(String prefix);
 
+    List<BookDTO> getAll();
+
     BookDTO create(BookDTO book);
     
 }

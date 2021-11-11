@@ -27,4 +27,9 @@ public class BookController {
         return ResponseEntity.ok(bookService.create(book));
     }
 
+    @GetMapping("/GetAll")
+    public ResponseEntity getAll (){
+        return ResponseEntity.ok(bookService.getAll());
+    }
+
 }

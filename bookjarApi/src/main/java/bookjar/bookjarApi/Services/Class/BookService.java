@@ -53,5 +53,16 @@ public class BookService implements IBookService {
             throw e;
         }
     }
+
+    @Override
+    public List<BookDTO> getAll() {
+        List<Book> bookList = bookRepository.findAll();
+
+        List<BookDTO> bookDtoList = new ArrayList<BookDTO>();
+
+        bookList.forEach(b -> bookDtoList.add(new BookDTO(b)));
+
+        return bookDtoList;
+    }
     
 }
