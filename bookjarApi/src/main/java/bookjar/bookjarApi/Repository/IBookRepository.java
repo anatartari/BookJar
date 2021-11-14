@@ -1,11 +1,11 @@
-package bookjar.bookjarApi.Repository;
+package bookjar.bookjarApi.repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import bookjar.bookjarApi.Models.*;
+import bookjar.bookjarApi.models.*;
 
 @Repository
 public interface IBookRepository extends JpaRepository<Book, Integer> {

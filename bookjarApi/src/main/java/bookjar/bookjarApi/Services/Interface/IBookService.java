@@ -1,4 +1,4 @@
-package bookjar.bookjarApi.Services.Interface;
+package bookjar.bookjarApi.services.Interface;
 
 import java.util.List;
 
@@ -11,5 +11,7 @@ public interface IBookService {
     List<BookDTO> getAll();
 
     BookDTO create(BookDTO book);
+
+    BookDTO getDetails(int booktId);
     
 }

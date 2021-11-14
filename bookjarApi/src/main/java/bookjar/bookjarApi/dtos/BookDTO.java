@@ -2,7 +2,7 @@ package bookjar.bookjarApi.dtos;
 
 import java.sql.Date;
 
-import bookjar.bookjarApi.Models.Book;
+import bookjar.bookjarApi.models.Book;
 
 public class BookDTO {
     

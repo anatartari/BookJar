@@ -1,16 +1,15 @@
-package bookjar.bookjarApi.Services.Class;
+package bookjar.bookjarApi.services.Class;
 
 import java.util.*;
 
-import org.springframework.data.repository.support.Repositories;
 import org.springframework.stereotype.Service;
 
-import bookjar.bookjarApi.Models.Book;
-import bookjar.bookjarApi.Models.User;
-import bookjar.bookjarApi.Repository.IBookRepository;
-import bookjar.bookjarApi.Repository.IUserRepository;
-import bookjar.bookjarApi.Services.Interface.IBookService;
 import bookjar.bookjarApi.dtos.BookDTO;
+import bookjar.bookjarApi.models.Book;
+import bookjar.bookjarApi.models.User;
+import bookjar.bookjarApi.repository.IBookRepository;
+import bookjar.bookjarApi.repository.IUserRepository;
+import bookjar.bookjarApi.services.Interface.IBookService;
 
 @Service
 public class BookService implements IBookService {
@@ -63,6 +62,12 @@ public class BookService implements IBookService {
         bookList.forEach(b -> bookDtoList.add(new BookDTO(b)));
 
         return bookDtoList;
+    }
+
+    @Override
+    public BookDTO getDetails(int booktId) {
+        // TODO Auto-generated method stub
+        return null;
     }
     
 }

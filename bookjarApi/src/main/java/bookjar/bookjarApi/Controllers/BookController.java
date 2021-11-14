@@ -1,10 +1,10 @@
-package bookjar.bookjarApi.Controllers;
+package bookjar.bookjarApi.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import bookjar.bookjarApi.Services.Class.BookService;
 import bookjar.bookjarApi.dtos.BookDTO;
+import bookjar.bookjarApi.services.Class.BookService;
 
 @RestController
 @RequestMapping("/Book")
