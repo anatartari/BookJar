@@ -14,6 +14,7 @@ public interface IBookService {
 
     BookDTO getDetails(int booktId);
 
-    BookDTO update(int booktId, BookDTO bookDTO);
+    BookDTO update(int bookId, BookDTO bookDTO);
     
+    void Delete(int bookId);
 }

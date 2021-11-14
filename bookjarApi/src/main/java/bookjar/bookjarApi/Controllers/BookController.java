@@ -1,5 +1,6 @@
 package bookjar.bookjarApi.controllers;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,6 +41,13 @@ public class BookController {
     @PutMapping("/Update")
     public ResponseEntity update (@RequestParam int bookId, @RequestBody BookDTO bookDto){
         return ResponseEntity.ok(bookService.update(bookId, bookDto));
+    }
+
+    @DeleteMapping("/Delete")
+    public ResponseEntity delete (@RequestParam int bookId){
+        bookService.Delete(bookId);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }

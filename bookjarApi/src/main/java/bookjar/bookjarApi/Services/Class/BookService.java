@@ -78,11 +78,11 @@ public class BookService implements IBookService {
     }
 
     @Override
-    public BookDTO update(int booktId, BookDTO bookDTO) {
+    public BookDTO update(int bookId, BookDTO bookDTO) {
         try {
-            Book book = bookRepository.findById(booktId).orElse(new Book());
+            Book book = bookRepository.findById(bookId).orElse(new Book());
 
-            if(book.getId() == booktId){
+            if(book.getId() == bookId){
                 book.setRating(bookDTO.getRating());
                 book.setAuthor(bookDTO.getAuthor());
                 book.setColor(bookDTO.getColor());
@@ -101,6 +101,22 @@ public class BookService implements IBookService {
         } catch (Exception e) {
            throw e;
         }
+    }
+
+    @Override
+    public void Delete(int bookId) {
+        try {
+            Book book = bookRepository.findById(bookId).orElse(new Book());
+
+            book.setUser(null);
+
+            bookRepository.delete(book);
+
+
+        } catch (Exception e) {
+           throw e;
+        }
+        
     }
     
 }
