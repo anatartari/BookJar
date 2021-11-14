@@ -32,4 +32,14 @@ public class BookController {
         return ResponseEntity.ok(bookService.getAll());
     }
 
+    @GetMapping("/GetDetails")
+    public ResponseEntity getDetails (@RequestParam int bookId){
+        return ResponseEntity.ok(bookService.getDetails(bookId));
+    }
+
+    @PutMapping("/Update")
+    public ResponseEntity update (@RequestParam int bookId, @RequestBody BookDTO bookDto){
+        return ResponseEntity.ok(bookService.update(bookId, bookDto));
+    }
+
 }

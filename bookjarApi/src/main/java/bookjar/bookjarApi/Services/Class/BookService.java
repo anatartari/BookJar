@@ -66,8 +66,41 @@ public class BookService implements IBookService {
 
     @Override
     public BookDTO getDetails(int booktId) {
-        // TODO Auto-generated method stub
-        return null;
+        try {
+            
+          Book book = bookRepository.findById(booktId).orElse(new Book());
+
+        return new BookDTO(book);
+ 
+         } catch (Exception e) {
+             throw e;
+         }
+    }
+
+    @Override
+    public BookDTO update(int booktId, BookDTO bookDTO) {
+        try {
+            Book book = bookRepository.findById(booktId).orElse(new Book());
+
+            if(book.getId() == booktId){
+                book.setRating(bookDTO.getRating());
+                book.setAuthor(bookDTO.getAuthor());
+                book.setColor(bookDTO.getColor());
+                book.setComment(bookDTO.getComment());
+                book.setEdition(bookDTO.getEdition());
+                book.setReadAt(bookDTO.getReadAt());
+                book.setStatus(bookDTO.getStatus());
+                book.setTitle(bookDTO.getTitle());
+
+                bookRepository.save(book);
+
+                return bookDTO;
+            }
+
+           return null;
+        } catch (Exception e) {
+           throw e;
+        }
     }
     
 }

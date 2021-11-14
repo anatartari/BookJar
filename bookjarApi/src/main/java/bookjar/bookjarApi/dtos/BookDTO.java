@@ -3,6 +3,7 @@ package bookjar.bookjarApi.dtos;
 import java.sql.Date;
 
 import bookjar.bookjarApi.models.Book;
+import bookjar.bookjarApi.models.User;
 
 public class BookDTO {
     
@@ -26,6 +27,8 @@ public class BookDTO {
 
     private int UserId;
 
+    private User User;
+
 public BookDTO(){}
 
     public BookDTO(Book book){
@@ -39,6 +42,9 @@ public BookDTO(){}
         Comment = book.getComment();
         Color = book.getColor();
         UserId = book.getUser().getId();
+        book.getUser().setBooksList(null);
+        book.getUser().setPassword(null);
+        User = book.getUser();
     }
 
     public BookDTO(String title, String author, String edition, int rating, int status, Date readAt, String comment,
@@ -178,6 +184,20 @@ public BookDTO(){}
      */
     public void setUserId(int UserId) {
         this.UserId = UserId;
+    }
+
+     /**
+     * @return User return the User
+     */
+    public User getUser() {
+        return User;
+    }
+
+    /**
+     * @param User the User to set
+     */
+    public void setUser(User User) {
+        this.User = User;
     }
 
 

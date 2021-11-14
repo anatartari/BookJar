@@ -13,5 +13,7 @@ public interface IBookService {
     BookDTO create(BookDTO book);
 
     BookDTO getDetails(int booktId);
+
+    BookDTO update(int booktId, BookDTO bookDTO);
     
 }
