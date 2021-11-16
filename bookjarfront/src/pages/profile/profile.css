@@ -1,0 +1,50 @@
+.vl {
+  border-left: 1px solid #707078;
+  height: 20px;
+  width: 2px;
+  margin-top: 24px;
+  margin-left: 36px;
+  margin-right: 6px;
+}
+
+.vl--big {
+  border-left: 1px solid #707078;
+  width: 2px;
+  height: 100px;
+  margin-left: 42px;
+  margin-right: 42px;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 64px;
+}
+
+.wrapper {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 200px 200px 200px;
+  background-color: #fff;
+  color: #444;
+}
+
+.a {
+  grid-column: 1 / span 2;
+}
+.b {
+  grid-column: 4;
+  grid-row: 1 / span 2;
+}
+.c {
+  grid-column: 1;
+  grid-row: 1;
+}
+.d {
+  grid-column: 2;
+  grid-row: 1;
+}
+.e {
+  grid-column: 3;
+  grid-row: 1;
+}
