@@ -1,0 +1,14 @@
+.nav-icon__search {
+  width: 23px;
+}
+
+.nav-icon__book-close {
+  width: 22px;
+  height: 27px;
+}
+
+.menu-btn {
+  background-color: transparent;
+  border: none;
+  margin-top: 26px;
+}
