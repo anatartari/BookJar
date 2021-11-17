@@ -17,7 +17,7 @@ export const NavbarContainer = styled.div`
   justify-content: space-between;
   height: 80px;
   z-index: 1;
-  width: 100%;
+  width: 80%;
   padding: 0 50px;
 `;
 export const NavLogo = styled.h1`
@@ -25,13 +25,12 @@ export const NavLogo = styled.h1`
   justify-self: center;
   cursor: pointer;
   font-family: "Merriweather Sans", sans-serif;
-  font-size: 3.2rem;
+  font-size: 2.8rem;
   display: flex;
   align-items: flex-end;
-  margin-left: 42px;
   font-weight: 400;
   text-decoration: none;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
 `;
 
 export const NavMenu = styled.ul`
@@ -39,7 +38,6 @@ export const NavMenu = styled.ul`
   align-items: center;
   list-style: none;
   text-align: center;
-  margin-right: 42px;
 `;
 
 export const NavItem = styled.li`
