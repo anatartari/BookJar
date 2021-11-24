@@ -1,4 +1,4 @@
-package bookjar.bookjarApi.models;
+package bookjar.bookjarApi.Models;
 
 import java.sql.Date;
 
@@ -19,8 +19,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import bookjar.bookjarApi.dtos.BookDTO;
-
 @Entity
 @Table(name="Books")
 public class Book {
@@ -28,9 +26,9 @@ public class Book {
     public Book(){}
 
     public Book(int id, String title, String author, String edition, int rating, int status, Date readAt,
-            String comment, String color, bookjar.bookjarApi.models.User user) {
+            String comment, String color, bookjar.bookjarApi.Models.User user) {
         Id = id;
-        this.title = title;
+        Title = title;
         Author = author;
         Edition = edition;
         Rating = rating;
@@ -41,24 +39,12 @@ public class Book {
         User = user;
     }
 
-    public Book(BookDTO bookDto){
-        Id = bookDto.getBookId();
-        title = bookDto.getTitle();
-        Author = bookDto.getAuthor();
-        Edition = bookDto.getEdition();
-        Rating = bookDto.getRating();
-        Status = bookDto.getStatus();
-        ReadAt = bookDto.getReadAt();
-        Comment = bookDto.getComment();
-        Color = bookDto.getColor();
-    }
-
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int Id;
 
     @Column(length = 150)
-    private String title;
+    private String Title;
 
     @Column(length = 80)
     private String Author;
@@ -83,7 +69,6 @@ public class Book {
     @JsonIgnoreProperties
     private User User;
 
-
     /**
      * @return int return the Id
      */
@@ -102,14 +87,14 @@ public class Book {
      * @return String return the Title
      */
     public String getTitle() {
-        return title;
+        return Title;
     }
 
     /**
      * @param Title the Title to set
      */
     public void setTitle(String Title) {
-        this.title = Title;
+        this.Title = Title;
     }
 
     /**

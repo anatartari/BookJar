@@ -1,0 +1,63 @@
+html {
+  font-size: 62.5%;
+}
+
+/***************TEXT-STYLES***************/
+
+.text-title-dark-bold {
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: "Merriweather Sans", sans-serif;
+  color: #101418;
+}
+
+.text-title-dark {
+  font-size: 1.8rem;
+  font-weight: 400;
+  font-family: "Merriweather Sans", sans-serif;
+  color: #101418;
+}
+
+.text-standart-italic-dark {
+  font-size: 1.4rem;
+  font-weight: 300;
+  font-family: "Merriweather Sans", sans-serif;
+  font-style: italic;
+  color: #101418;
+}
+
+.text-medium-italic-dark {
+  font-size: 1.4rem;
+  font-weight: 400;
+  font-family: "Merriweather Sans", sans-serif;
+  font-style: italic;
+  color: #101418;
+}
+
+.text-standart-dark {
+  font-size: 1.4rem;
+  font-weight: 300;
+  font-family: "Merriweather Sans", sans-serif;
+  color: #101418;
+}
+
+.text-asap-regular-medium {
+  font-family: "Asap Condensed", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: white;
+}
+
+.text-asap-regular-small {
+  font-family: "Asap Condensed", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: white;
+}
+
+.text-asap-regular-big-bold {
+  font-family: "Asap Condensed", sans-serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: white;
+}

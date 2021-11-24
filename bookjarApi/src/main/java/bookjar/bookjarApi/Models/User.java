@@ -1,4 +1,4 @@
-package bookjar.bookjarApi.models;
+package bookjar.bookjarApi.Models;
 
 import java.util.*;
 import java.util.Date;
