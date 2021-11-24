@@ -2,6 +2,10 @@ html {
   font-size: 62.5%;
 }
 
+.app-margin-top {
+  margin-top: 42px;
+}
+
 /***************TEXT-STYLES***************/
 
 .text-title-dark-bold {
@@ -60,4 +64,19 @@ html {
   font-size: 2rem;
   font-weight: 500;
   color: white;
+}
+
+.text-quick-regular-dark-big {
+  font-family: "Quicksand", sans-serif;
+  color: #101418;
+  font-size: 2.4rem;
+  font-weight: 400;
+}
+
+.text-quick-standart-italic-dark {
+  font-size: 1.4rem;
+  font-weight: 400;
+  font-family: "Quicksand", sans-serif;
+
+  color: #101418;
 }

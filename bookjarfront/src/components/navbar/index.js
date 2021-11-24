@@ -69,7 +69,7 @@ const NavBar = ({ toggle }) => {
                 <MenuItem className={classes.menuItem} onClick={handleClose}>
                   Editar perfil
                 </MenuItem>
-                <MenuItem className={classes.menuItem} onClick={handleClose}>
+                <MenuItem to="/register-book" className={classes.menuItem}>
                   Adicionar livro
                 </MenuItem>
                 <MenuItem className={classes.menuItem} onClick={handleClose}>

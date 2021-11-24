@@ -1,0 +1,24 @@
+.register-book-container {
+  display: flex;
+  justify-content: center;
+}
+
+.register-book-container-block {
+  display: block;
+}
+
+/* DESKTOP */
+@media only screen and (min-width: 600px) {
+  .input-container {
+    margin-bottom: 12px;
+    width: 360px;
+  }
+}
+
+/* MOBILE */
+@media only screen and (max-width: 600px) {
+  .input-container {
+    margin-bottom: 12px;
+    /* width: 100%; */
+  }
+}
