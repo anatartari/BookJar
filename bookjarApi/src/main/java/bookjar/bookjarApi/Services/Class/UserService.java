@@ -1,11 +1,11 @@
-package bookjar.bookjarApi.Services.Class;
+package bookjar.bookjarApi.services.Class;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import bookjar.bookjarApi.Models.User;
-import bookjar.bookjarApi.Repository.IUserRepository;
-import bookjar.bookjarApi.Services.Interface.IUserService;
+import bookjar.bookjarApi.models.User;
+import bookjar.bookjarApi.repository.IUserRepository;
+import bookjar.bookjarApi.services.Interface.IUserService;
 
 @Service
 public class UserService implements IUserService {

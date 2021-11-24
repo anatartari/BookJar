@@ -1,4 +1,4 @@
-package bookjar.bookjarApi.Models;
+package bookjar.bookjarApi.models;
 
 import java.sql.Date;
 
@@ -26,7 +26,7 @@ public class Book {
     public Book(){}
 
     public Book(int id, String title, String author, String edition, int rating, int status, Date readAt,
-            String comment, String color, bookjar.bookjarApi.Models.User user) {
+            String comment, String color, bookjar.bookjarApi.models.User user) {
         Id = id;
         Title = title;
         Author = author;

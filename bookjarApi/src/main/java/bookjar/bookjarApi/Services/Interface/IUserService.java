@@ -1,6 +1,6 @@
-package bookjar.bookjarApi.Services.Interface;
+package bookjar.bookjarApi.services.Interface;
 
-import bookjar.bookjarApi.Models.User;
+import bookjar.bookjarApi.models.User;
 
 public interface IUserService {
 
