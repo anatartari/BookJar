@@ -1,11 +1,11 @@
-package bookjar.bookjarApi.controllers;
+package bookjar.bookjarApi.Controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import bookjar.bookjarApi.models.User;
-import bookjar.bookjarApi.services.Class.UserService;
+import bookjar.bookjarApi.Models.User;
+import bookjar.bookjarApi.Services.Class.UserService;
 
 @RestController
 @RequestMapping("/User")
