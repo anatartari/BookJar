@@ -83,6 +83,13 @@
   color: #505b62;
 }
 
+.text-quick-standart-dark {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Quicksand", sans-serif;
+  color: #505b62;
+}
+
 .helper-text {
   font-size: 12px;
   font-weight: 400;

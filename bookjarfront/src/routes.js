@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Profile } from "./pages/profile";
 import Login from "./pages/login";
 import { RegisterBook } from "./pages/regiser-book";
+import { RegisterUser } from "./pages/register-user";
 
 const AppRoutes = () => {
   return (
@@ -11,6 +12,7 @@ const AppRoutes = () => {
       <Route element={<Profile />} path="/" />
       <Route element={<Login />} path="/login" />
       <Route element={<RegisterBook />} path="/register-book" />
+      <Route element={<RegisterUser />} path="/register-user" />
     </Routes>
   );
 };
