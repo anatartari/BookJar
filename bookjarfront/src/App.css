@@ -75,3 +75,24 @@
   font-family: "Quicksand", sans-serif;
   color: #101418;
 }
+
+.text-quick-standart-gray-small {
+  font-size: 18px;
+  font-weight: 400;
+  font-family: "Quicksand", sans-serif;
+  color: #505b62;
+}
+
+.helper-text {
+  font-size: 12px;
+  font-weight: 400;
+  font-family: "Quicksand", sans-serif;
+  color: #505b62;
+}
+
+.helper-text--link {
+  font-size: 12px;
+  font-weight: 600;
+  font-family: "Quicksand", sans-serif;
+  color: #101418;
+}
