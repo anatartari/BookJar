@@ -24,6 +24,8 @@ function readingProgress(status) {
     return "Não foi lido ainda";
   } else if (status === "giveUp") {
     return "Desistiu da leitura";
+  } else if (status === "finished") {
+    return "Leitura finalizada";
   }
 }
 
@@ -45,15 +47,10 @@ export const Book = (props) => {
 
         <div className="frame">
           <div className="cover-block">
-            {props.book.year_finished ? (
-              <p className="text-asap-regular-medium cover-itens">
-                Lido em {props.book.year_finished}
-              </p>
-            ) : (
-              <p className="text-asap-regular-medium cover-itens">
-                {readingProgress(props.book.progress)}
-              </p>
-            )}
+            <p className="text-asap-regular-medium cover-itens">
+              {readingProgress(props.book.progress)}
+            </p>
+
             {props.book.comment ? (
               <button
                 onClick={handleOpen}

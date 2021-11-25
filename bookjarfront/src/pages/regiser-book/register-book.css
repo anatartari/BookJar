@@ -1,6 +1,11 @@
+html {
+  font-size: 100%;
+}
+
 .register-book-container {
   display: flex;
   justify-content: center;
+  margin-bottom: 36px;
 }
 
 .register-book-container-block {
