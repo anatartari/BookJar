@@ -3,6 +3,7 @@ package bookjar.bookjarApi.services.Class;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import bookjar.bookjarApi.dtos.LoginDTO;
 import bookjar.bookjarApi.models.User;
 import bookjar.bookjarApi.repository.IUserRepository;
 import bookjar.bookjarApi.services.Interface.IUserService;
@@ -31,5 +32,25 @@ public class UserService implements IUserService {
             throw e;
         }
     }
+
+    @Override
+    public User login(LoginDTO credencials) {
+        try {
+
+            User user = userRepository.findByEmail(credencials.getEmail());
+
+            if(comparePassword(credencials.getPassword(), user.getPassword())){
+                return user;
+            }
+
+            return new User();
+            
+        } catch (Exception e) {
+            throw e;
+        }
+    }
     
+    private boolean comparePassword(String requestPassword, String dbPassword){
+        return encoder.matches(requestPassword, dbPassword);
+    }
 }

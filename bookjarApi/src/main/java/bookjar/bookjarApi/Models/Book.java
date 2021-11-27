@@ -29,199 +29,144 @@ public class Book {
 
     public Book(int id, String title, String author, String edition, int rating, int status, Date readAt,
             String comment, String color, bookjar.bookjarApi.models.User user) {
-        Id = id;
+        this.id = id;
         this.title = title;
-        Author = author;
-        Edition = edition;
-        Rating = rating;
-        Status = status;
-        ReadAt = readAt;
-        Comment = comment;
-        Color = color;
-        User = user;
+        this.author = author;
+        this.edition = edition;
+        this.rating = rating;
+        this.status = status;
+        this.readAt = readAt;
+        this.comment = comment;
+        this.color = color;
+        this.user = user;
     }
 
     public Book(BookDTO bookDto){
-        Id = bookDto.getBookId();
-        title = bookDto.getTitle();
-        Author = bookDto.getAuthor();
-        Edition = bookDto.getEdition();
-        Rating = bookDto.getRating();
-        Status = bookDto.getStatus();
-        ReadAt = bookDto.getReadAt();
-        Comment = bookDto.getComment();
-        Color = bookDto.getColor();
+        this.id = bookDto.getBookId();
+        this.title = bookDto.getTitle();
+        this.author = bookDto.getAuthor();
+        this.edition = bookDto.getEdition();
+        this.rating = bookDto.getRating();
+        this.status = bookDto.getStatus();
+        this.readAt = bookDto.getReadAt();
+        this.comment = bookDto.getComment();
+        this.color = bookDto.getColor();
     }
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private int Id;
+    private int id;
 
     @Column(length = 150)
     private String title;
 
     @Column(length = 80)
-    private String Author;
+    private String author;
 
-    private String Edition;
+    private String edition;
 
-    private int Rating;
+    private int rating;
 
-    private int Status;
+    private int status;
 
-    private Date ReadAt;
+    private Date readAt;
 
     @Column(length = 300)
-    private String Comment;
+    private String comment;
 
-    private String Color;
+    private String color;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "UserId", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIdentityReference(alwaysAsId = true)
     @JsonIgnoreProperties
-    private User User;
+    private User user;
+
 
 
     /**
-     * @return int return the Id
+     * @return int return the id
      */
     public int getId() {
-        return Id;
+        return id;
     }
 
     /**
-     * @param Id the Id to set
+     * @param id the id to set
      */
-    public void setId(int Id) {
-        this.Id = Id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
-     * @return String return the Title
+     * @param title the title to set
      */
-    public String getTitle() {
-        return title;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     /**
-     * @param Title the Title to set
+     * @param author the author to set
      */
-    public void setTitle(String Title) {
-        this.title = Title;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     /**
-     * @return String return the Author
+     * @param edition the edition to set
      */
-    public String getAuthor() {
-        return Author;
+    public void setEdition(String edition) {
+        this.edition = edition;
     }
 
     /**
-     * @param Author the Author to set
+     * @param rating the rating to set
      */
-    public void setAuthor(String Author) {
-        this.Author = Author;
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
     /**
-     * @return String return the Edition
+     * @param status the status to set
      */
-    public String getEdition() {
-        return Edition;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     /**
-     * @param Edition the Edition to set
+     * @param readAt the readAt to set
      */
-    public void setEdition(String Edition) {
-        this.Edition = Edition;
+    public void setReadAt(Date readAt) {
+        this.readAt = readAt;
     }
 
     /**
-     * @return int return the Rating
+     * @param comment the comment to set
      */
-    public int getRating() {
-        return Rating;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     /**
-     * @param Rating the Rating to set
+     * @param color the color to set
      */
-    public void setRating(int Rating) {
-        this.Rating = Rating;
+    public void setColor(String color) {
+        this.color = color;
     }
 
     /**
-     * @return int return the Status
-     */
-    public int getStatus() {
-        return Status;
-    }
-
-    /**
-     * @param Status the Status to set
-     */
-    public void setStatus(int Status) {
-        this.Status = Status;
-    }
-
-    /**
-     * @return Date return the ReadAt
-     */
-    public Date getReadAt() {
-        return ReadAt;
-    }
-
-    /**
-     * @param ReadAt the ReadAt to set
-     */
-    public void setReadAt(Date ReadAt) {
-        this.ReadAt = ReadAt;
-    }
-
-    /**
-     * @return String return the Comment
-     */
-    public String getComment() {
-        return Comment;
-    }
-
-    /**
-     * @param Comment the Comment to set
-     */
-    public void setComment(String Comment) {
-        this.Comment = Comment;
-    }
-
-    /**
-     * @return String return the Color
-     */
-    public String getColor() {
-        return Color;
-    }
-
-    /**
-     * @param Color the Color to set
-     */
-    public void setColor(String Color) {
-        this.Color = Color;
-    }
-
-    /**
-     * @return User return the User
+     * @return User return the user
      */
     public User getUser() {
-        return User;
+        return user;
     }
 
     /**
-     * @param User the User to set
+     * @param user the user to set
      */
-    public void setUser(User User) {
-        this.User = User;
+    public void setUser(User user) {
+        this.user = user;
     }
 
 }
