@@ -38,6 +38,10 @@
   }
 }
 
+.link {
+  text-decoration: none;
+}
+
 /* MOBILE */
 @media only screen and (max-width: 600px) {
   .cover-container {

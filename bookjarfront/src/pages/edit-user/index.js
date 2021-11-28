@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { TextField } from "@mui/material";
-import "./register-user.css";
+import "./edit-user.css";
 import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
@@ -9,7 +9,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-export const RegisterUser = () => {
+export const EditUser = () => {
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -87,11 +87,10 @@ export const RegisterUser = () => {
           <br />
           <div className="one-border-frame">
             <p className="text-quick-regular-dark-big --less-margin ">
-              Cadastre-se
+              Edite os dados do seu perfil
             </p>
             <p className="helper-text --less-margin">
-              Já possui uma conta?{" "}
-              <span className="helper-text--link">Faça login</span>
+              Altere os campos que deseja e clique em "Atualizar perfil"
             </p>
           </div>
           <br />
@@ -102,7 +101,7 @@ export const RegisterUser = () => {
               fullWidth
               size="small"
               id="outlined-basic"
-              label="Nome completo *"
+              label="Nome completo"
               variant="outlined"
               onChange={handleFullname}
             />
@@ -112,7 +111,7 @@ export const RegisterUser = () => {
               fullWidth
               size="small"
               id="outlined-basic"
-              label="E-mail *"
+              label="E-mail"
               variant="outlined"
               onChange={handleEmail}
             />
@@ -123,7 +122,7 @@ export const RegisterUser = () => {
               fullWidth
               size="small"
               id="outlined-basic"
-              label="Data de nascimento *"
+              label="Data de nascimento"
               variant="outlined"
               onChange={handleBirthdate}
               InputLabelProps={{ shrink: true }}
@@ -135,8 +134,7 @@ export const RegisterUser = () => {
           </p>
           <div className="subtitle-container">
             <p className="text-quick-standart-dark --less-margin">
-              Deixe até duas redes sociais além do seu e-mail no perfil, para
-              que outros leitores possam te conhecer
+              Mudou seu username? Não tem problema, você pode alterar ele aqui
             </p>
           </div>
           <br />
@@ -163,12 +161,11 @@ export const RegisterUser = () => {
           </div>
           <br />
           <p className="text-quick-standart-dark-small --less-margin">
-            Apresente-se *
+            Mude sua apresentação
           </p>
           <div className="subtitle-container">
             <p className="text-quick-standart-dark --less-margin">
-              Escreva uma breve apresentação sobre si mesmo, seus gostos
-              literários
+              Novos gostos literários? Atualize sua vida e preferências
             </p>
           </div>
           <br />
@@ -185,7 +182,7 @@ export const RegisterUser = () => {
           </div>
           <br />
           <p className="text-quick-standart-dark-small --password-margin">
-            Cadastre sua senha *
+            Alterar senha
           </p>
           <div className="input-container">
             <TextField
@@ -202,7 +199,7 @@ export const RegisterUser = () => {
           <br />
           <div>
             <Button onClick={submit} fullWidth variant="contained">
-              Cadastrar
+              Atualizar perfil
             </Button>
           </div>
         </div>

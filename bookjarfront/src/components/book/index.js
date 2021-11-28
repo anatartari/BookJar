@@ -4,6 +4,7 @@ import Star from "../../assets/icons/star.svg";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -42,7 +43,9 @@ export const Book = (props) => {
     <>
       <div id="cover" className={"cover-container " + props.book.color}>
         <div className="cover-flex-container">
-          <p className="text-asap-regular-big">{props.book.title}</p>
+          <Link className="link" to="/edit-book">
+            <p className="text-asap-regular-big">{props.book.title}</p>
+          </Link>
         </div>
 
         <div className="frame">
