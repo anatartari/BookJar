@@ -61,7 +61,7 @@ public class User {
     @Column(length = 300)
     private String Description;
 
-    @OneToMany(mappedBy = "User", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnoreProperties
     private List<Book> booksList;
 
