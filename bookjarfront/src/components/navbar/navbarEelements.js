@@ -25,7 +25,7 @@ export const NavLogo = styled.h1`
   justify-self: center;
   cursor: pointer;
   font-family: "Merriweather Sans", sans-serif;
-  font-size: 2.8rem;
+  font-size: 28px;
   display: flex;
   align-items: flex-end;
   font-weight: 400;
