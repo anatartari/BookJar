@@ -1,0 +1,36 @@
+.register-book-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 36px;
+}
+
+.register-book-container-block {
+  display: block;
+}
+
+.one-border-frame {
+  border-left: 1px solid #505b62;
+  padding-left: 12px;
+  max-width: 300px;
+}
+
+.--less-margin {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+/* DESKTOP */
+@media only screen and (min-width: 600px) {
+  .input-container {
+    margin-bottom: 12px;
+    width: 360px;
+  }
+}
+
+/* MOBILE */
+@media only screen and (max-width: 600px) {
+  .input-container {
+    margin-bottom: 12px;
+    /* width: 100%; */
+  }
+}

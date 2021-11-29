@@ -4,6 +4,7 @@ import Star from "../../assets/icons/star.svg";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -24,6 +25,8 @@ function readingProgress(status) {
     return "Não foi lido ainda";
   } else if (status === "giveUp") {
     return "Desistiu da leitura";
+  } else if (status === "finished") {
+    return "Leitura finalizada";
   }
 }
 
@@ -40,20 +43,17 @@ export const Book = (props) => {
     <>
       <div id="cover" className={"cover-container " + props.book.color}>
         <div className="cover-flex-container">
-          <p className="text-asap-regular-big">{props.book.title}</p>
+          <Link className="link" to="/edit-book">
+            <p className="text-asap-regular-big">{props.book.title}</p>
+          </Link>
         </div>
 
         <div className="frame">
           <div className="cover-block">
-            {props.book.year_finished ? (
-              <p className="text-asap-regular-medium cover-itens">
-                Lido em {props.book.year_finished}
-              </p>
-            ) : (
-              <p className="text-asap-regular-medium cover-itens">
-                {readingProgress(props.book.progress)}
-              </p>
-            )}
+            <p className="text-asap-regular-medium cover-itens">
+              {readingProgress(props.book.progress)}
+            </p>
+
             {props.book.comment ? (
               <button
                 onClick={handleOpen}

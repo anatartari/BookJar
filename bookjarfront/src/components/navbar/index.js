@@ -17,6 +17,7 @@ import Search from "../../assets/icons/search.svg";
 
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   menuItem: {
@@ -45,7 +46,7 @@ const NavBar = ({ toggle }) => {
 
           <NavMenu>
             <NavItem>
-              <NavLinks to="#">
+              <NavLinks to="/search">
                 <img className="nav-icon__search" src={Search} />
               </NavLinks>
             </NavItem>
@@ -63,15 +64,22 @@ const NavBar = ({ toggle }) => {
                   "aria-labelledby": "basic-button",
                 }}
               >
-                <MenuItem className={classes.menuItem} onClick={handleClose}>
-                  Perfil
-                </MenuItem>
-                <MenuItem className={classes.menuItem} onClick={handleClose}>
-                  Editar perfil
-                </MenuItem>
-                <MenuItem to="/register-book" className={classes.menuItem}>
-                  Adicionar livro
-                </MenuItem>
+                <Link className="link" to="/">
+                  <MenuItem className={classes.menuItem} onClick={handleClose}>
+                    Perfil
+                  </MenuItem>
+                </Link>
+                <Link className="link" to="/edit-user">
+                  <MenuItem className={classes.menuItem} onClick={handleClose}>
+                    Editar perfil
+                  </MenuItem>
+                </Link>
+                <Link className="link" to="/register-book">
+                  <MenuItem className={classes.menuItem}>
+                    Adicionar livro
+                  </MenuItem>
+                </Link>
+
                 <MenuItem className={classes.menuItem} onClick={handleClose}>
                   Sair dessa conta
                 </MenuItem>
