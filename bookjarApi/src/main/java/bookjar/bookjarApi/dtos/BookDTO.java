@@ -7,7 +7,7 @@ import bookjar.bookjarApi.models.User;
 
 public class BookDTO {
     
-    private int BookId;
+    private int bookId;
 
     private String Title;
 
@@ -32,7 +32,7 @@ public class BookDTO {
 public BookDTO(){}
 
     public BookDTO(Book book){
-        BookId = book.getId();
+        bookId = book.getId();
         Title = book.getTitle();
         Author = book.getAuthor();
         Edition = book.getEdition();
@@ -205,14 +205,14 @@ public BookDTO(){}
      * @return int return the BookId
      */
     public int getBookId() {
-        return BookId;
+        return bookId;
     }
 
     /**
      * @param BookId the BookId to set
      */
     public void setBookId(int BookId) {
-        this.BookId = BookId;
+        this.bookId = BookId;
     }
 
 }
