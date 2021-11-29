@@ -13,3 +13,8 @@
   border: none;
   margin-top: 26px;
 }
+
+.link {
+  text-decoration: none;
+  color: black;
+}

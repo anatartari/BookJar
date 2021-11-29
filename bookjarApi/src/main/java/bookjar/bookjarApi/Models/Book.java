@@ -106,11 +106,18 @@ public class Book {
         this.title = title;
     }
 
+    public String getTitle() {
+        return title;
+    }
     /**
      * @param author the author to set
      */
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public String getAuthor() {
+        return author;
     }
 
     /**
@@ -120,11 +127,19 @@ public class Book {
         this.edition = edition;
     }
 
+    public String getEdition() {
+        return edition;
+    }
+
     /**
      * @param rating the rating to set
      */
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    public int getRating() {
+        return rating;
     }
 
     /**
@@ -134,11 +149,19 @@ public class Book {
         this.status = status;
     }
 
+    public int getStatus() {
+        return status;
+    }
+
     /**
      * @param readAt the readAt to set
      */
     public void setReadAt(Date readAt) {
         this.readAt = readAt;
+    }
+
+    public Date getReadAt() {
+        return readAt;
     }
 
     /**
@@ -148,11 +171,19 @@ public class Book {
         this.comment = comment;
     }
 
+    public String getComment() {
+        return comment;
+    }
+
     /**
      * @param color the color to set
      */
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public String getColor() {
+        return color;
     }
 
     /**

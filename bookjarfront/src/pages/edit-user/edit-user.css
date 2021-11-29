@@ -8,6 +8,26 @@
   display: block;
 }
 
+.one-border-frame {
+  border-left: 1px solid #505b62;
+  padding-left: 12px;
+  max-width: 300px;
+}
+
+.--less-margin {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.--password-margin {
+  margin-top: 4px;
+  margin-bottom: 12px;
+}
+
+.subtitle-container {
+  max-width: 360px;
+}
+
 /* DESKTOP */
 @media only screen and (min-width: 600px) {
   .input-container {
@@ -21,5 +41,8 @@
   .input-container {
     margin-bottom: 12px;
     /* width: 100%; */
+  }
+  .mobile-padding {
+    padding: 16px;
   }
 }

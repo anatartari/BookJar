@@ -1,29 +1,27 @@
-html {
-  font-size: 62.5%;
-}
-
-.app-margin-top {
-  margin-top: 42px;
+@media only screen and (min-width: 600px) {
+  .app-margin-top {
+    margin-top: 42px;
+  }
 }
 
 /***************TEXT-STYLES***************/
 
 .text-title-dark-bold {
-  font-size: 1.8rem;
+  font-size: 18px;
   font-weight: 700;
   font-family: "Merriweather Sans", sans-serif;
   color: #101418;
 }
 
 .text-title-dark {
-  font-size: 1.8rem;
+  font-size: 18px;
   font-weight: 400;
   font-family: "Merriweather Sans", sans-serif;
   color: #101418;
 }
 
 .text-standart-italic-dark {
-  font-size: 1.4rem;
+  font-size: 14px;
   font-weight: 300;
   font-family: "Merriweather Sans", sans-serif;
   font-style: italic;
@@ -31,7 +29,7 @@ html {
 }
 
 .text-medium-italic-dark {
-  font-size: 1.4rem;
+  font-size: 14px;
   font-weight: 400;
   font-family: "Merriweather Sans", sans-serif;
   font-style: italic;
@@ -39,7 +37,7 @@ html {
 }
 
 .text-standart-dark {
-  font-size: 1.4rem;
+  font-size: 14px;
   font-weight: 300;
   font-family: "Merriweather Sans", sans-serif;
   color: #101418;
@@ -47,21 +45,21 @@ html {
 
 .text-asap-regular-medium {
   font-family: "Asap Condensed", sans-serif;
-  font-size: 1.8rem;
+  font-size: 18px;
   font-weight: 400;
   color: white;
 }
 
 .text-asap-regular-small {
   font-family: "Asap Condensed", sans-serif;
-  font-size: 1.6rem;
+  font-size: 16px;
   font-weight: 400;
   color: white;
 }
 
 .text-asap-regular-big-bold {
   font-family: "Asap Condensed", sans-serif;
-  font-size: 2rem;
+  font-size: 20px;
   font-weight: 500;
   color: white;
 }
@@ -69,14 +67,41 @@ html {
 .text-quick-regular-dark-big {
   font-family: "Quicksand", sans-serif;
   color: #101418;
-  font-size: 2.4rem;
+  font-size: 24px;
   font-weight: 400;
 }
 
-.text-quick-standart-italic-dark {
-  font-size: 1.4rem;
+.text-quick-standart-dark-small {
+  font-size: 18px;
   font-weight: 400;
   font-family: "Quicksand", sans-serif;
+  color: #101418;
+}
 
+.text-quick-standart-gray-small {
+  font-size: 18px;
+  font-weight: 400;
+  font-family: "Quicksand", sans-serif;
+  color: #505b62;
+}
+
+.text-quick-standart-dark {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Quicksand", sans-serif;
+  color: #505b62;
+}
+
+.helper-text {
+  font-size: 12px;
+  font-weight: 400;
+  font-family: "Quicksand", sans-serif;
+  color: #505b62;
+}
+
+.helper-text--link {
+  font-size: 12px;
+  font-weight: 600;
+  font-family: "Quicksand", sans-serif;
   color: #101418;
 }

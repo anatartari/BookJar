@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { TextField } from "@mui/material";
-import "./register-book.css";
+import "./edit-book.css";
 import Button from "@mui/material/Button";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
@@ -14,13 +14,13 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-export const RegisterBook = () => {
+export const EditBook = () => {
   const [rating, setRating] = useState("");
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [edition, setEdition] = useState("");
-  const [color, setColor] = useState("blue");
-  const [progress, setProgress] = useState("notRead");
+  const [color, setColor] = useState("");
+  const [progress, setProgress] = useState("");
   const [comment, setComment] = useState("");
   const [open, setOpen] = React.useState(false);
   const [message, setMessage] = useState("");
@@ -84,42 +84,9 @@ export const RegisterBook = () => {
       </Snackbar>
       <div className="register-book-container app-margin-top">
         <div className="register-book-container-block">
-          <p className="text-quick-regular-dark-big">Cadastre seu livro</p>
-          <div className="input-container">
-            <TextField
-              fullWidth
-              size="small"
-              id="outlined-basic"
-              label="Título"
-              variant="outlined"
-              onChange={handleTitle}
-            />
-          </div>
-          <div className="input-container">
-            <TextField
-              fullWidth
-              size="small"
-              id="outlined-basic"
-              label="Autor"
-              variant="outlined"
-              onChange={handleAuthor}
-            />
-          </div>
-          <div className="input-container">
-            <TextField
-              type="number"
-              fullWidth
-              size="small"
-              id="outlined-basic"
-              label="Edição"
-              variant="outlined"
-              onChange={handleEdition}
-            />
-          </div>
-          <p className="text-quick-standart-dark-small">
-            {" "}
-            Escolha a cor da capa
-          </p>
+          <p className="text-quick-regular-dark-big">Edite seu livro</p>
+
+          <p className="text-quick-standart-dark-small"> Mude a cor da capa</p>
 
           <FormControl component="fieldset">
             <RadioGroup

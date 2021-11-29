@@ -1,0 +1,28 @@
+/* .search-container-block {
+  display: block;
+} */
+
+/* DESKTOP */
+@media only screen and (min-width: 600px) {
+  .search-container {
+    /* display: flex;
+        justify-content: center;
+        margin-bottom: 36px; */
+    margin-left: 108px;
+    margin-right: 108px;
+  }
+}
+.radio-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* MOBILE */
+@media only screen and (max-width: 600px) {
+  .mobile-padding {
+    padding: 16px;
+  }
+  .search-block--mobile {
+    display: block;
+  }
+}
