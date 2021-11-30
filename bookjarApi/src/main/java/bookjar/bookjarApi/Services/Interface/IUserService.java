@@ -10,4 +10,6 @@ public interface IUserService {
     User update(User user, int userId);
     
     User login(LoginDTO credencials);
+
+    User getById(int userId);
 }

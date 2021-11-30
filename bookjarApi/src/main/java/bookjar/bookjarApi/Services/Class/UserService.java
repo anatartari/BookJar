@@ -80,4 +80,20 @@ public class UserService implements IUserService {
             throw e;
         }
     }
+
+    @Override
+    public User getById(int userId) {
+        try {
+
+            User user = userRepository.findById(userId).orElse(new User());
+            
+            if(user.getId() > 0)
+                user.getBooksList().forEach(b -> b.setUser(null));
+
+            return user;
+            
+        } catch (Exception e) {
+            throw e;
+        }
+    }
 }
