@@ -6,4 +6,6 @@ import bookjar.bookjarApi.models.User;
 
 public interface IUserRepository extends JpaRepository<User, Integer> {
     
+    User findByEmail(String prefix);
+
 }

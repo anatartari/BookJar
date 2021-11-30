@@ -26,12 +26,11 @@ public class User {
     public User(int id, String email, String fullName, String password, Date birthday, String instagram, String twitter,
             String tiktok, String description, ArrayList<Book> booksList) {
         Id = id;
-        Email = email;
+        this.email = email;
         FullName = fullName;
         Password = password;
         Birthday = birthday;
         Instagram = instagram;
-        Twitter = twitter;
         Tiktok = tiktok;
         Description = description;
         this.booksList = booksList;
@@ -42,7 +41,7 @@ public class User {
     private int Id;    
 
     @Column(nullable = false, unique = true)
-    private String Email;
+    private String email;
     
     @Column(nullable = false)
     private String FullName;
@@ -53,8 +52,6 @@ public class User {
     private Date Birthday;
 
     private String Instagram;
-
-    private String Twitter;
 
     private String Tiktok;
 
@@ -84,14 +81,14 @@ public class User {
      * @return String return the Email
      */
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     /**
      * @param Email the Email to set
      */
     public void setEmail(String Email) {
-        this.Email = Email;
+        this.email = Email;
     }
 
     /**
@@ -149,20 +146,6 @@ public class User {
      */
     public void setInstagram(String Instagram) {
         this.Instagram = Instagram;
-    }
-
-    /**
-     * @return String return the Twitter
-     */
-    public String getTwitter() {
-        return Twitter;
-    }
-
-    /**
-     * @param Twitter the Twitter to set
-     */
-    public void setTwitter(String Twitter) {
-        this.Twitter = Twitter;
     }
 
     /**
