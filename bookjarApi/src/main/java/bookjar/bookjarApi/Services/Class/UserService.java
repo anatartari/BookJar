@@ -3,6 +3,7 @@ package bookjar.bookjarApi.services.Class;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import bookjar.bookjarApi.dtos.LoginDTO;
 import bookjar.bookjarApi.models.User;
 import bookjar.bookjarApi.repository.IUserRepository;
 import bookjar.bookjarApi.services.Interface.IUserService;
@@ -31,5 +32,52 @@ public class UserService implements IUserService {
             throw e;
         }
     }
+
+    @Override
+    public User login(LoginDTO credencials) {
+        try {
+
+            User user = userRepository.findByEmail(credencials.getEmail());
+
+            if(comparePassword(credencials.getPassword(), user.getPassword())){
+                user.getBooksList().forEach(a -> a.setUser(null));
+                return user;
+            }
+
+            return new User();
+            
+        } catch (Exception e) {
+            throw e;
+        }
+    }
     
+    private boolean comparePassword(String requestPassword, String dbPassword){
+        return encoder.matches(requestPassword, dbPassword);
+    }
+
+    @Override
+    public User update(User user, int userId) {
+        try {
+
+            User userDb = userRepository.findById(userId).orElse(new User());
+
+            if(userDb.getId() > 0){
+                userDb.setEmail(user.getEmail());
+                userDb.setFullName(user.getFullName());
+                userDb.setPassword(encoder.encode(user.getPassword()));
+                userDb.setBirthday(user.getBirthday());
+                userDb.setInstagram(user.getInstagram());
+                userDb.setTiktok(user.getTiktok());
+                userDb.setDescription(user.getDescription());
+
+                userRepository.save(userDb);
+            }
+
+            userDb.setBooksList(null);
+            return userDb;
+            
+        } catch (Exception e) {
+            throw e;
+        }
+    }
 }
