@@ -9,6 +9,7 @@ import bookjar.bookjarApi.models.User;
 import bookjar.bookjarApi.services.Class.UserService;
 import bookjar.bookjarApi.services.Interface.IUserService;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/User")
 public class UserConstroller {

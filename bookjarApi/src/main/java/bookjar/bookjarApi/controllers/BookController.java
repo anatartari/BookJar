@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import bookjar.bookjarApi.dtos.BookDTO;
 import bookjar.bookjarApi.services.Class.BookService;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/Book")
 public class BookController {
