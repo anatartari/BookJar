@@ -39,7 +39,8 @@ public class BookService implements IBookService {
     public BookDTO create(BookDTO book) {
         try {
             
-           User user = userRepository.getById(book.getUserId());
+        //    User user = userRepository.getById(book.getUserId());
+           User user = userRepository.findById(book.getUserId()).get();
 
            Book newBook = new Book(book);
            newBook.setUser(user); 
