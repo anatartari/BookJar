@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TextField } from "@mui/material";
 import "./register-book.css";
 import Button from "@mui/material/Button";
@@ -9,12 +9,15 @@ import FormControl from "@mui/material/FormControl";
 import Rating from "@mui/material/Rating";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
+import api from "../../services/api";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
 export const RegisterBook = () => {
+  const userId = localStorage.getItem("@bookjar/userId");
+
   const [rating, setRating] = useState("");
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
@@ -71,8 +74,26 @@ export const RegisterBook = () => {
         setMessage("O campo autor é obrigatório");
       }
       setOpen(true);
+    } else {
+      api
+        .post("/Book/Create", {
+          title: title,
+          author: author,
+          edition: edition,
+          rating: rating,
+          status: progress,
+          readAt: "2020-12-04",
+          comment: comment,
+          color: color,
+          userId: userId,
+        })
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.error("ops! ocorreu um erro" + err);
+        });
     }
-    console.log(title, author, edition, color, progress, rating, comment);
   };
 
   return (
@@ -172,22 +193,22 @@ export const RegisterBook = () => {
               onChange={handleProgress}
             >
               <FormControlLabel
-                value="notRead"
+                value={1}
                 control={<Radio />}
                 label="Não começei o livro ainda"
               />
               <FormControlLabel
-                value="inProgress"
+                value={2}
                 control={<Radio />}
                 label="Estou lendo"
               />
               <FormControlLabel
-                value="finished"
+                value={3}
                 control={<Radio />}
                 label="Já acabei o livro"
               />
               <FormControlLabel
-                value="giveUp"
+                value={4}
                 control={<Radio />}
                 label="Desisti da leitura"
               />

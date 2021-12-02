@@ -28,6 +28,7 @@ const useStyles = makeStyles({
 
 const NavBar = ({ toggle }) => {
   const classes = useStyles();
+  const userId = localStorage.getItem("@bookjar/userId");
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -64,7 +65,7 @@ const NavBar = ({ toggle }) => {
                   "aria-labelledby": "basic-button",
                 }}
               >
-                <Link className="link" to="/">
+                <Link className="link" to={`/${userId}`}>
                   <MenuItem className={classes.menuItem} onClick={handleClose}>
                     Perfil
                   </MenuItem>

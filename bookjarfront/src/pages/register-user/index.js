@@ -1,25 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TextField } from "@mui/material";
 import "./register-user.css";
 import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
+import api from "../../services/api";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
 export const RegisterUser = () => {
+  let navigate = useNavigate();
+
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
   const [birthdate, setBirthDate] = useState("");
   const [insta, setInsta] = useState("");
   const [tiktok, setTiktok] = useState("");
   const [bio, setBio] = useState("");
   const [password, setPassword] = useState("");
   const [open, setOpen] = React.useState(false);
-  const [fullMessage, setFullMessage] = useState("");
+  const [openError, setOpenError] = useState(false);
+  const [user, setUser] = useState("");
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -29,16 +34,20 @@ export const RegisterUser = () => {
     setOpen(false);
   };
 
+  const handleCloseError = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpenError(false);
+  };
+
   const handleFullname = (event) => {
     setFullname(event.target.value);
   };
 
   const handleEmail = (event) => {
     setEmail(event.target.value);
-  };
-
-  const handleUsername = (event) => {
-    setUsername(event.target.value);
   };
 
   const handleBirthdate = (event) => {
@@ -61,6 +70,21 @@ export const RegisterUser = () => {
     setPassword(event.target.value);
   };
 
+  const login = () => {
+    api
+      .post("/User/Login", {
+        email: email,
+        password: password,
+      })
+      .then((response) => {
+        console.log(response);
+        localStorage.setItem("@bookjar/userId", response.data.id);
+      })
+      .catch((err) => {
+        console.error("ops! ocorreu um erro" + err);
+      });
+  };
+
   const submit = () => {
     if (
       fullname === "" ||
@@ -70,6 +94,24 @@ export const RegisterUser = () => {
       password === ""
     ) {
       setOpen(true);
+    } else {
+      api
+        .post("/User/Register", {
+          email: email,
+          fullName: fullname,
+          password: password,
+          birthday: birthdate,
+          instagram: insta,
+          tiktok: tiktok,
+          description: bio,
+        })
+        .then((response) => {
+          login();
+          console.log(response);
+        })
+        .catch((err) => {
+          console.error("ops! ocorreu um erro" + err);
+        });
     }
   };
 
@@ -81,6 +123,15 @@ export const RegisterUser = () => {
           * são obrigatórios
         </Alert>
       </Snackbar>
+      <Snackbar open={openError} autoHideDuration={4000} onClose={handleClose}>
+        <Alert
+          onClose={handleCloseError}
+          severity="error"
+          sx={{ width: "100%" }}
+        >
+          Um erro ocorreu, revise suas informações e tente novamente
+        </Alert>
+      </Snackbar>
       <div className="register-book-container app-margin-top mobile-padding">
         <div className="register-book-container-block">
           <br />
@@ -89,10 +140,12 @@ export const RegisterUser = () => {
             <p className="text-quick-regular-dark-big --less-margin ">
               Cadastre-se
             </p>
-            <p className="helper-text --less-margin">
-              Já possui uma conta?{" "}
-              <span className="helper-text--link">Faça login</span>
-            </p>
+            <Link className="link" to="/login">
+              <p className="helper-text --less-margin">
+                Já possui uma conta?{" "}
+                <span className="helper-text--link">Faça login</span>
+              </p>
+            </Link>
           </div>
           <br />
 

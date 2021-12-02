@@ -6,12 +6,17 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 
+function generateUsername(email) {
+  var splitEmail = email.split("@");
+  return splitEmail[0];
+}
+
 const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: 300,
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
@@ -19,13 +24,13 @@ const style = {
 };
 
 function readingProgress(status) {
-  if (status === "inProgress") {
+  if (status === 2) {
     return "Leitura em progresso";
-  } else if (status === "notRead") {
+  } else if (status === 1) {
     return "Não foi lido ainda";
-  } else if (status === "giveUp") {
+  } else if (status === 4) {
     return "Desistiu da leitura";
-  } else if (status === "finished") {
+  } else if (status === 3) {
     return "Leitura finalizada";
   }
 }
@@ -43,7 +48,7 @@ export const Book = (props) => {
     <>
       <div id="cover" className={"cover-container " + props.book.color}>
         <div className="cover-flex-container">
-          <Link className="link" to="/edit-book">
+          <Link className="link" to={{ pathname: "/edit-book", state: "oi" }}>
             <p className="text-asap-regular-big">{props.book.title}</p>
           </Link>
         </div>
@@ -51,7 +56,7 @@ export const Book = (props) => {
         <div className="frame">
           <div className="cover-block">
             <p className="text-asap-regular-medium cover-itens">
-              {readingProgress(props.book.progress)}
+              {readingProgress(props.book.status)}
             </p>
 
             {props.book.comment ? (
@@ -102,7 +107,7 @@ export const Book = (props) => {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Opinião de @biazinha
+            Opinião de @{generateUsername(props.email)}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             {props.book.comment}

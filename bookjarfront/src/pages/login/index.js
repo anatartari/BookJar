@@ -4,12 +4,17 @@ import Button from "@mui/material/Button";
 import "./login.css";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
+import api from "../../services/api";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
 const Login = () => {
+  let navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -41,6 +46,22 @@ const Login = () => {
         setMessage("O campo Senha é obrigatório");
       }
       setOpen(true);
+    } else {
+      api
+        .post("/User/Login", {
+          email: email,
+          password: password,
+        })
+        .then((response) => {
+          console.log(response);
+          localStorage.setItem("@bookjar/userId", response.data.id);
+          navigate(`/${response.data.id}`);
+        })
+        .catch((err) => {
+          console.error("ops! ocorreu um erro" + err);
+          setMessage("E-mail ou senha inválidos");
+          setOpen(true);
+        });
     }
   };
 
@@ -89,10 +110,14 @@ const Login = () => {
               type="password"
             />
           </div>
-          <p className="helper-text">
-            Não tem uma conta no BookJar?{" "}
-            <span className="helper-text--link">Cadastre-se</span>
-          </p>
+          <Link className="link" to="/register-user">
+            <Link className="link" to="/register-user">
+              <p className="helper-text">
+                Não tem uma conta no BookJar?{" "}
+                <span className="helper-text--link">Cadastre-se</span>
+              </p>
+            </Link>
+          </Link>
           <br />
           <div>
             <Button onClick={submit} fullWidth variant="contained">

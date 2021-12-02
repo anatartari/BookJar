@@ -13,7 +13,7 @@ import { EditUser } from "./pages/edit-user";
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route element={<Profile />} path="/" />
+      <Route element={<Profile />} path="/:userId" />
       <Route element={<Login />} path="/login" />
       <Route element={<RegisterBook />} path="/register-book" />
       <Route element={<RegisterUser />} path="/register-user" />
