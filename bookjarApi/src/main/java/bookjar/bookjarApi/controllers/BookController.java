@@ -19,8 +19,8 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @GetMapping("/GetByTitle")
-    public ResponseEntity register (@RequestParam String prefix){
+    @GetMapping("/GetByTitle/{prefix}")
+    public ResponseEntity register (@PathVariable String prefix){
         return ResponseEntity.ok(bookService.findByTitleStartingWith(prefix));
     }
 
@@ -34,18 +34,18 @@ public class BookController {
         return ResponseEntity.ok(bookService.getAll());
     }
 
-    @GetMapping("/GetDetails")
-    public ResponseEntity getDetails (@RequestParam int bookId){
+    @GetMapping("/GetDetails/{bookId}")
+    public ResponseEntity getDetails (@PathVariable int bookId){
         return ResponseEntity.ok(bookService.getDetails(bookId));
     }
 
-    @PutMapping("/Update")
-    public ResponseEntity update (@RequestParam int bookId, @RequestBody BookDTO bookDto){
+    @PutMapping("/Update/{bookId}")
+    public ResponseEntity update (@PathVariable int bookId, @RequestBody BookDTO bookDto){
         return ResponseEntity.ok(bookService.update(bookId, bookDto));
     }
 
-    @DeleteMapping("/Delete")
-    public ResponseEntity delete (@RequestParam int bookId){
+    @DeleteMapping("/Delete/{bookId}")
+    public ResponseEntity delete (@PathVariable int bookId){
         bookService.Delete(bookId);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
