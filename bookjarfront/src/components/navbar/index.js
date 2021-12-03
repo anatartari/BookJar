@@ -84,7 +84,7 @@ const NavBar = ({ toggle }) => {
                       Perfil
                     </MenuItem>
                   </Link>
-                  <Link className="link" to="/edit-user">
+                  <Link className="link" to={`/edit-user/${userId}`}>
                     <MenuItem
                       className={classes.menuItem}
                       onClick={handleClose}

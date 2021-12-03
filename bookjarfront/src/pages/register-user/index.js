@@ -79,6 +79,7 @@ export const RegisterUser = () => {
       .then((response) => {
         console.log(response);
         localStorage.setItem("@bookjar/userId", response.data.id);
+        navigate(`/profile/${response.data.id}`);
       })
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);

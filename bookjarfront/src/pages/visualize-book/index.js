@@ -26,13 +26,11 @@ export const VisualizeBook = () => {
             </Link>
           </div>
           <div className="visualize-book-container ">
-            <Book email={book.user.email} book={book}></Book>
+            <Book edit={false} email={book.user.email} book={book}></Book>
           </div>
         </div>
       ) : (
-        <>
-          <p>loading</p>
-        </>
+        <></>
       )}
     </>
   );

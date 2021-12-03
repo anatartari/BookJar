@@ -54,9 +54,14 @@ const Login = () => {
         })
         .then((response) => {
           console.log(response);
-          localStorage.setItem("@bookjar/userId", response.data.id);
-          localStorage.setItem("@bookjar/userEmail", response.data.email);
-          navigate(`/profile/${response.data.id}`);
+          if (response.data.id === 0) {
+            setMessage("E-mail ou senha inválidos");
+            setOpen(true);
+          } else {
+            localStorage.setItem("@bookjar/userId", response.data.id);
+            localStorage.setItem("@bookjar/userEmail", response.data.email);
+            navigate(`/profile/${response.data.id}`);
+          }
         })
         .catch((err) => {
           console.error("ops! ocorreu um erro" + err);
@@ -65,6 +70,16 @@ const Login = () => {
         });
     }
   };
+
+  // const test = () => {
+  //   api
+  //     .put(`/User/changePassword/3`, {
+  //       password: "bia",
+  //     })
+  //     .then((res) => {
+  //       console.log(res);
+  //     });
+  // };
 
   return (
     <>
@@ -88,28 +103,29 @@ const Login = () => {
 
           <br />
           <br />
-
-          <div className="input-container">
-            <TextField
-              onChange={handleEmail}
-              fullWidth
-              size="small"
-              id="outlined-basic"
-              label="E-mail"
-              variant="outlined"
-            />
-          </div>
-          <div className="input-container">
-            <TextField
-              onChange={handlePassword}
-              fullWidth
-              size="small"
-              id="outlined-basic"
-              label="Senha"
-              variant="outlined"
-              type="password"
-            />
-          </div>
+          <form>
+            <div className="input-container">
+              <TextField
+                onChange={handleEmail}
+                fullWidth
+                size="small"
+                id="outlined-basic"
+                label="E-mail"
+                variant="outlined"
+              />
+            </div>
+            <div className="input-container">
+              <TextField
+                onChange={handlePassword}
+                fullWidth
+                size="small"
+                id="outlined-basic"
+                label="Senha"
+                variant="outlined"
+                type="password"
+              />
+            </div>
+          </form>
           <Link className="link" to="/register-user">
             <Link className="link" to="/register-user">
               <p className="helper-text">
@@ -124,6 +140,11 @@ const Login = () => {
               Entrar
             </Button>
           </div>
+          {/* <div>
+            <Button onClick={test} fullWidth variant="contained">
+              teste
+            </Button>
+          </div> */}
         </div>
       </div>
     </>

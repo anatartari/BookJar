@@ -48,9 +48,13 @@ export const Book = (props) => {
     <>
       <div id="cover" className={"cover-container " + props.book.color}>
         <div className="cover-flex-container">
-          <Link className="link" to={{ pathname: "/edit-book", state: "oi" }}>
+          {props.edit ? (
+            <Link className="link" to={`/edit-book/${props.book.id}`}>
+              <p className="text-asap-regular-big">{props.book.title}</p>
+            </Link>
+          ) : (
             <p className="text-asap-regular-big">{props.book.title}</p>
-          </Link>
+          )}
         </div>
 
         <div className="frame">

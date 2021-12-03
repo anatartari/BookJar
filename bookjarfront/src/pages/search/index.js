@@ -7,11 +7,9 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
 import api from "../../services/api";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const Search = () => {
-  let navigate = useNavigate();
-
   const [prefix, setPrefix] = useState("");
   const [books, setBooks] = useState([]);
 

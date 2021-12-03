@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { TextField } from "@mui/material";
-import "./edit-book.css"; 
+import "./edit-book.css";
 import Button from "@mui/material/Button";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
@@ -11,12 +11,16 @@ import Rating from "@mui/material/Rating";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import api from "../../services/api";
+import { useNavigate } from "react-router-dom";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
 export const EditBook = () => {
+  let navigate = useNavigate();
+  const logedUserId = localStorage.getItem("@bookjar/userId");
+
   const [rating, setRating] = useState("");
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
@@ -33,14 +37,14 @@ export const EditBook = () => {
     api
       .get(`/Book/GetDetails/${bookId}`)
       .then((res) => {
-        setTitle(res.data.title)
-        setColor(res.data.color)
-        setProgress(res.data.status)
-        setRating(res.data.rating)
-        setAuthor(res.data.author)
-        setComment(res.data.comment)
-        setEdition(res.data.edition)
-        setUserId(res.data.userId)
+        setTitle(res.data.title);
+        setColor(res.data.color);
+        setProgress(res.data.status);
+        setRating(res.data.rating);
+        setAuthor(res.data.author);
+        setComment(res.data.comment);
+        setEdition(res.data.edition);
+        setUserId(res.data.userId);
         console.log(res.data);
       })
       .catch((err) => {
@@ -94,27 +98,39 @@ export const EditBook = () => {
         setMessage("O campo autor é obrigatório");
       }
       setOpen(true);
-    }
-    else {
+    } else {
       api
-      .put(`/Book/Update/${bookId}`, {
-        title: title,
-        author: author,
-        edition: edition,
-        rating: rating,
-        status: progress,
-        comment: comment,
-        color: color,
-        userId: userId,
-      })
+        .put(`/Book/Update/${bookId}`, {
+          title: title,
+          author: author,
+          edition: edition,
+          rating: rating,
+          status: progress,
+          comment: comment,
+          color: color,
+          userId: userId,
+        })
+        .then((res) => {
+          console.log(res.data);
+          navigate(`/profile/${logedUserId}`);
+        })
+        .catch((err) => {
+          console.error("ops! ocorreu um erro" + err);
+        });
+    }
+    console.log(title, author, edition, color, progress, rating, comment);
+  };
+
+  const deleteBook = () => {
+    api
+      .delete(`Book/Delete/${bookId}`)
       .then((res) => {
-        console.log(res.data);
+        console.log(res);
+        navigate(`/profile/${logedUserId}`);
       })
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);
       });
-    }
-    console.log(title, author, edition, color, progress, rating, comment);
   };
 
   return (
@@ -234,6 +250,17 @@ export const EditBook = () => {
           <div>
             <Button onClick={submit} fullWidth variant="contained">
               Salvar livro
+            </Button>
+          </div>
+          <br />
+          <div>
+            <Button
+              color="error"
+              onClick={deleteBook}
+              fullWidth
+              variant="contained"
+            >
+              Excluir livro
             </Button>
           </div>
         </div>

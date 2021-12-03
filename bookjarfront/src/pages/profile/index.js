@@ -13,8 +13,13 @@ function generateUsername(email) {
 
 export const Profile = () => {
   const [user, setUser] = useState(null);
-  // const userId = localStorage.getItem("@bookjar/userId");
+  const logedUserId = localStorage.getItem("@bookjar/userId");
   let { userId } = useParams();
+
+  const checkUser = () => {
+    if (userId === logedUserId) return true;
+    else return false;
+  };
 
   useEffect(() => {
     console.log(userId);
@@ -155,13 +160,21 @@ export const Profile = () => {
                         {i % 2 !== 0 ? (
                           <Grid container justifyContent="flex-start">
                             <div className="book-margin--left">
-                              <Book email={user.email} book={book}></Book>
+                              <Book
+                                edit={checkUser}
+                                email={user.email}
+                                book={book}
+                              ></Book>
                             </div>
                           </Grid>
                         ) : (
                           <Grid container justifyContent="flex-end">
                             <div className="book-margin--right">
-                              <Book email={user.email} book={book}></Book>
+                              <Book
+                                edit={checkUser}
+                                email={user.email}
+                                book={book}
+                              ></Book>
                             </div>
                           </Grid>
                         )}
@@ -238,7 +251,11 @@ export const Profile = () => {
                     {user.booksList.map((book, i) => (
                       <Grid item xs={12} md={6}>
                         <div>
-                          <Book email={user.email} book={book}></Book>
+                          <Book
+                            edit={checkUser}
+                            email={user.email}
+                            book={book}
+                          ></Book>
                         </div>
                       </Grid>
                     ))}
