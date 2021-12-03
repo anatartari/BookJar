@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router";
 import { TextField } from "@mui/material";
 import "./edit-book.css";
 import Button from "@mui/material/Button";
@@ -9,6 +10,7 @@ import FormControl from "@mui/material/FormControl";
 import Rating from "@mui/material/Rating";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
+import api from "../../services/api";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -22,8 +24,30 @@ export const EditBook = () => {
   const [color, setColor] = useState("");
   const [progress, setProgress] = useState("");
   const [comment, setComment] = useState("");
+  const [userId, setUserId] = useState(0);
   const [open, setOpen] = React.useState(false);
   const [message, setMessage] = useState("");
+  let { bookId } = useParams();
+
+  useEffect(() => {
+console.log(bookId)
+    api
+      .get(`/Book/GetDetails/${bookId}`)
+      .then((res) => {
+        setTitle(res.data.title)
+        setColor(res.data.color)
+        setProgress(res.data.status)
+        setRating(res.data.rating)
+        setAuthor(res.data.author)
+        setComment(res.data.comment)
+        setEdition(res.data.edition)
+        setUserId(res.data.userId)
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log("Ocorreu um erro" + err);
+      });
+  }, []);
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -71,6 +95,25 @@ export const EditBook = () => {
         setMessage("O campo autor é obrigatório");
       }
       setOpen(true);
+    }
+    else {
+      api
+      .put(`/Book/Update/${bookId}`, {
+        title: title,
+        author: author,
+        edition: edition,
+        rating: rating,
+        status: progress,
+        comment: comment,
+        color: color,
+        userId: userId,
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.error("ops! ocorreu um erro" + err);
+      });
     }
     console.log(title, author, edition, color, progress, rating, comment);
   };
@@ -139,22 +182,22 @@ export const EditBook = () => {
               onChange={handleProgress}
             >
               <FormControlLabel
-                value="notRead"
+                value="1"
                 control={<Radio />}
                 label="Não começei o livro ainda"
               />
               <FormControlLabel
-                value="inProgress"
+                value="2"
                 control={<Radio />}
                 label="Estou lendo"
               />
               <FormControlLabel
-                value="finished"
+                value="3"
                 control={<Radio />}
                 label="Já acabei o livro"
               />
               <FormControlLabel
-                value="giveUp"
+                value="4"
                 control={<Radio />}
                 label="Desisti da leitura"
               />
