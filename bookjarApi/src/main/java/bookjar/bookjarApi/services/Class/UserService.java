@@ -64,7 +64,7 @@ public class UserService implements IUserService {
             if(userDb.getId() > 0){
                 userDb.setEmail(user.getEmail());
                 userDb.setFullName(user.getFullName());
-                userDb.setPassword(encoder.encode(user.getPassword()));
+                
                 userDb.setBirthday(user.getBirthday());
                 userDb.setInstagram(user.getInstagram());
                 userDb.setTiktok(user.getTiktok());
@@ -91,6 +91,26 @@ public class UserService implements IUserService {
                 user.getBooksList().forEach(b -> b.setUser(null));
 
             return user;
+            
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    @Override
+    public User changePassword(String password, int userId) {
+        try {
+
+            User userDb = userRepository.findById(userId).orElse(new User());
+
+            if(userDb.getId() > 0){
+                userDb.setPassword(encoder.encode(password));
+
+                userRepository.save(userDb);
+            }
+
+            userDb.setBooksList(null);
+            return userDb;
             
         } catch (Exception e) {
             throw e;

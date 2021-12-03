@@ -37,6 +37,10 @@ public class UserConstroller {
         return ResponseEntity.ok(userService.update(user, userId));
     }
 
+    @PutMapping("/changePassword/{userId}")
+    public ResponseEntity Update (@RequestBody String password, @PathVariable int userId) {
+        return ResponseEntity.ok(userService.changePassword(password, userId));
+    }
    
     @GetMapping("/getById/{userId}")
     public ResponseEntity getById (@PathVariable int userId) {
