@@ -13,12 +13,12 @@ import { EditUser } from "./pages/edit-user";
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route element={<Profile />} path="/:userId" />
-      <Route element={<Login />} path="/login" />
+      <Route element={<Profile />} path="/profile/:userId" />
+      <Route element={<Login />} path="/" />
       <Route element={<RegisterBook />} path="/register-book" />
       <Route element={<RegisterUser />} path="/register-user" />
       <Route element={<Search />} path="/search" />
-      <Route element={<VisualizeBook />} path="/vizualize-book" />
+      <Route element={<VisualizeBook />} path="/visualize-book/:bookId" />
       <Route element={<EditBook />} path="/edit-book" />
       <Route element={<EditUser />} path="/edit-user" />
     </Routes>

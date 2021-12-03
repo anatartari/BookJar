@@ -55,7 +55,8 @@ const Login = () => {
         .then((response) => {
           console.log(response);
           localStorage.setItem("@bookjar/userId", response.data.id);
-          navigate(`/${response.data.id}`);
+          localStorage.setItem("@bookjar/userEmail", response.data.email);
+          navigate(`/profile/${response.data.id}`);
         })
         .catch((err) => {
           console.error("ops! ocorreu um erro" + err);
@@ -65,7 +66,6 @@ const Login = () => {
     }
   };
 
-  //todo: link no cadastre-se
   return (
     <>
       <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>

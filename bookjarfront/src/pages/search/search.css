@@ -5,16 +5,21 @@
 /* DESKTOP */
 @media only screen and (min-width: 600px) {
   .search-container {
-    /* display: flex;
-        justify-content: center;
-        margin-bottom: 36px; */
     margin-left: 108px;
     margin-right: 108px;
+  }
+  .flex-search {
+    display: flex;
+  }
+
+  .search-btn {
+    height: 56px;
+    margin-left: 12px;
   }
 }
 .radio-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 /* MOBILE */
@@ -24,5 +29,8 @@
   }
   .search-block--mobile {
     display: block;
+  }
+  .search-btn {
+    width: 100%;
   }
 }
