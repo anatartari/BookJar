@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router";
 import { TextField } from "@mui/material";
 import "./edit-user.css";
 import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
+import api from "../../services/api";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -12,7 +14,6 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 export const EditUser = () => {
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
   const [birthdate, setBirthDate] = useState("");
   const [insta, setInsta] = useState("");
   const [tiktok, setTiktok] = useState("");
@@ -20,6 +21,25 @@ export const EditUser = () => {
   const [password, setPassword] = useState("");
   const [open, setOpen] = React.useState(false);
   const [fullMessage, setFullMessage] = useState("");
+  let { userId } = useParams();
+  useEffect(() => {
+    console.log(userId);
+    api
+      .get(`/User/getById/${userId}`)
+      .then((res) => {
+        setFullname(res.data.fullName)
+        setEmail(res.data.email)
+        setBirthDate(res.data.birthday)
+        setInsta(res.data.instagram)
+        setTiktok(res.data.tiktok)
+        setBio(res.data.description)
+        setPassword(res.data.password)
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log("Ocorreu um erro" + err);
+      });
+  }, []);
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -35,10 +55,6 @@ export const EditUser = () => {
 
   const handleEmail = (event) => {
     setEmail(event.target.value);
-  };
-
-  const handleUsername = (event) => {
-    setUsername(event.target.value);
   };
 
   const handleBirthdate = (event) => {
@@ -71,7 +87,36 @@ export const EditUser = () => {
     ) {
       setOpen(true);
     }
+    else{
+      api
+      .put(`/User/Update/${userId}`, {
+        fullName: fullname,
+        email: email,
+        birthday: birthdate,
+        instagram: insta,
+        tiktok: tiktok,
+        description: bio,
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.error("ops! ocorreu um erro" + err);
+      });
+    }
   };
+
+  const changePassword = () => {
+    api.put(`/User/changePassword/${userId}`, {
+        password: password
+    })
+    .then((res) => {
+      console.log(res.data);
+    })
+    .catch((err) => {
+      console.error("ops! ocorreu um erro" + err);
+    });
+  }
 
   return (
     <>
@@ -104,6 +149,8 @@ export const EditUser = () => {
               label="Nome completo"
               variant="outlined"
               onChange={handleFullname}
+              InputLabelProps={{ shrink: true }}
+              value={fullname}
             />
           </div>
           <div className="input-container">
@@ -114,6 +161,9 @@ export const EditUser = () => {
               label="E-mail"
               variant="outlined"
               onChange={handleEmail}
+              InputLabelProps={{ shrink: true }}
+              value={email}
+
             />
           </div>
           <div className="input-container">
@@ -126,6 +176,7 @@ export const EditUser = () => {
               variant="outlined"
               onChange={handleBirthdate}
               InputLabelProps={{ shrink: true }}
+              value={birthdate}
             />
           </div>
           <br />
@@ -146,6 +197,9 @@ export const EditUser = () => {
               label="Instagram"
               variant="outlined"
               onChange={handleInsta}
+              InputLabelProps={{ shrink: true }}
+              value={insta}
+
             />
           </div>
 
@@ -157,6 +211,9 @@ export const EditUser = () => {
               label="TikTok"
               variant="outlined"
               onChange={handleTiktok}
+              InputLabelProps={{ shrink: true }}
+              value={tiktok}
+
             />
           </div>
           <br />
@@ -178,6 +235,9 @@ export const EditUser = () => {
               variant="outlined"
               multiline
               onChange={handleBio}
+              InputLabelProps={{ shrink: true }}
+              value={bio}
+
             />
           </div>
           <br />
@@ -193,6 +253,8 @@ export const EditUser = () => {
               label=""
               variant="outlined"
               multiline
+              InputLabelProps={{ shrink: true }}
+              value={password}
               onChange={handlePassword}
             />
           </div>

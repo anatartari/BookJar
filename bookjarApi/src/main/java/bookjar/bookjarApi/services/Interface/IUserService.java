@@ -12,4 +12,6 @@ public interface IUserService {
     User login(LoginDTO credencials);
 
     User getById(int userId);
+
+    User changePassword(String password, int userId);
 }

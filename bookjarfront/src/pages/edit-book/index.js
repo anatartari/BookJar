@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { TextField } from "@mui/material";
-import "./edit-book.css";
+import "./edit-book.css"; 
 import Button from "@mui/material/Button";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
@@ -30,7 +30,6 @@ export const EditBook = () => {
   let { bookId } = useParams();
 
   useEffect(() => {
-console.log(bookId)
     api
       .get(`/Book/GetDetails/${bookId}`)
       .then((res) => {
