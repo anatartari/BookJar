@@ -11,9 +11,14 @@ function generateUsername(email) {
   return splitEmail[0];
 }
 
+function refreshPage() {
+  window.location.reload(true);
+}
+
 export const Profile = () => {
   const [user, setUser] = useState(null);
   const logedUserId = localStorage.getItem("@bookjar/userId");
+  const [refresh, setRefresh] = useState(false);
   let { userId } = useParams();
 
   const checkUser = () => {
@@ -28,6 +33,10 @@ export const Profile = () => {
       .then((res) => {
         setUser(res.data);
         console.log(res.data);
+        if (!refresh) {
+          // refreshPage();
+          setRefresh(true);
+        }
       })
       .catch((err) => {
         console.log("Ocorreu um erro" + err);
@@ -35,42 +44,6 @@ export const Profile = () => {
   }, []);
 
   const matches = useMediaQuery("(min-width:600px)");
-
-  const books = [
-    {
-      title: "O Alquimista",
-      progress: "finished",
-      year_finished: "2021",
-      rating: "5",
-      comment:
-        "Os elementos SVG devem ser dimensionados para uma visualização de 24x24px, de modo que o ícone resultante possa ser usado como está, ou incluído como filho para outros componentes de Material-UI que usam ícones. (Isso pode ser customizado com o atributo viewBox).",
-      edition: "5",
-      author: "Paulo Coelho",
-      color: "blue",
-    },
-    {
-      title: "Millenium: Os homens que não amavam as mulheres",
-      progress: "inProgress",
-      edition: "9",
-      author: "Stieg Larson",
-      color: "red",
-    },
-    {
-      title: "O código da Vinci",
-      progress: "notRead",
-
-      author: "Dan Brown",
-      color: "green",
-    },
-    {
-      title: "Orgulho e preconceito",
-      progress: "giveUp",
-      rating: "2",
-      edition: "9",
-      author: "Jane Austen",
-      color: "purple",
-    },
-  ];
 
   return (
     <>

@@ -11,12 +11,15 @@ import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import api from "../../services/api";
 
+import { useNavigate } from "react-router-dom";
+
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
 export const RegisterBook = () => {
   const userId = localStorage.getItem("@bookjar/userId");
+  let navigate = useNavigate();
 
   const [rating, setRating] = useState("");
   const [title, setTitle] = useState("");
@@ -89,6 +92,7 @@ export const RegisterBook = () => {
         })
         .then((res) => {
           console.log(res.data);
+          navigate(`/profile/${userId}`);
         })
         .catch((err) => {
           console.error("ops! ocorreu um erro" + err);
@@ -241,7 +245,7 @@ export const RegisterBook = () => {
               value={comment}
               onChange={handleComment}
             />
-          </div> 
+          </div>
           <br />
           <div>
             <Button onClick={submit} fullWidth variant="contained">
